@@ -21,11 +21,21 @@ struct TodoListView: View {
                 ForEach(toDoList){item in
                     ToDoView(todo: item,color:color)
                 }
+                .onDelete{indexSet in
+                    toDoList.remove(atOffsets: indexSet)
+                }
             }
             .listStyle(.plain)
             .toolbar{
                 ToolbarItem(placement: .topBarLeading){
                     Text("ToDoey")
+                        .font(.largeTitle)
+                        .bold()
+                        .fontDesign(.rounded)
+                        .foregroundStyle(color)
+                }
+                ToolbarItem(placement: .topBarTrailing){
+                    Text("\(toDoList.count)")
                         .font(.largeTitle)
                         .bold()
                         .fontDesign(.rounded)
@@ -37,7 +47,7 @@ struct TodoListView: View {
                             toDoList.append(Todo(text:""))
                         }label: {
                             Image(systemName: "plus.circle.fill")
-                            Text("New Todo")
+                            Text("New Reminder")
                         }
                         .buttonStyle(.plain)
                         .foregroundStyle(color)

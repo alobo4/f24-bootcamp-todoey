@@ -29,10 +29,11 @@ struct ToDoView: View {
             Button{
                 todo.isDone.toggle()
             } label: {
-                Image(systemName:todo.isDone ? "checkmark.square.fill" : "square")
+                Image(systemName:todo.isDone ? "circle.inset.filled" : "circle")
             }
-            .foregroundColor(color)
+            .foregroundStyle(todo.isDone ? color:.white)
             TextField("",text:$todo.text)
+                .foregroundStyle(todo.isDone ? .gray:.white)
         }
     }
 }

@@ -9,17 +9,27 @@ import SwiftUI
 
 struct ParentTodoListView: View {
     var body: some View {
-        NavigationStack{
+        NavigationView{
             List{
-                NavigationLink("Homework"){
-                    TodoListView(color: .red)
+                HStack{
+                    Image(systemName:"graduationcap.circle.fill")
+                        .foregroundStyle(.white,.green)
+                        .font(.system(size:30))
+                    NavigationLink("Homework"){
+                        TodoListView(color: .green)
+                    }
+                    .foregroundStyle(.white)
                 }
-                .foregroundStyle(.red)
-                NavigationLink("Chores"){
-                    TodoListView(color: .blue)
+                HStack{
+                    Image(systemName:"list.bullet.circle.fill")
+                        .foregroundStyle(.white,.blue)
+                        .font(.system(size:30))
+                    NavigationLink("Chores"){
+                        TodoListView(color: .blue)
+                    }
+                    .foregroundStyle(.white)
                 }
-                .foregroundStyle(.blue)
-
+                    
             }
             .navigationTitle("Reminders")
         }
